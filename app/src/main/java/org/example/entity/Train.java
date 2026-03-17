@@ -1,10 +1,14 @@
 package org.example.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Time;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
 
+@Setter
+@Getter
 public class Train {
 
     private Integer trainId;
@@ -16,4 +20,6 @@ public class Train {
     private Map<String, Time> stationTimings;
 
     private List<String> stations;
+
+
 }
