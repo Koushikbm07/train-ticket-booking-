@@ -1,4 +1,4 @@
-package org.example.util;
+package org.ticketbooking.util;
 
 import org.mindrot.jbcrypt.BCrypt;
 

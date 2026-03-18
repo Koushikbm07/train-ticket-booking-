@@ -1,10 +1,10 @@
-package org.example.service;
+package org.ticketbooking.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.entity.Train;
-import org.example.entity.User;
-import org.example.util.UserServiceUtils;
+import org.ticketbooking.entity.Train;
+import org.ticketbooking.entity.User;
+import org.ticketbooking.util.UserServiceUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,24 +16,23 @@ public class UserBookingService {
 
     private User user;
 
-    private final String USER_PATH="app/src/main/java/org/example/localdb/users.json";
+    private final String USER_PATH="app/src/main/java/org/ticketbooking/localdb/users.json";
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
     private List<User> userList;
 
-     public UserBookingService() throws IOException{
-        loadUsers();
-     }
     public UserBookingService(User user) throws IOException {
         this.user = user;
         loadUsers();
     }
+     public UserBookingService() throws IOException{
+        loadUsers();
+     }
 
-    private List<User> loadUsers() throws IOException {
-        File users = new File(USER_PATH);
-        userList = objectMapper.readValue(users, new TypeReference<List<User>>() {});
-        return userList;
+
+    private void loadUsers() throws IOException {
+        userList = objectMapper.readValue(new File(USER_PATH), new TypeReference<List<User>>() {});
     }
 
     private boolean loginUser(){
