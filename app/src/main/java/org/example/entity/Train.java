@@ -15,7 +15,7 @@ public class Train {
 
     private Integer trainNumber;
 
-    private List<List<Boolean>> seats;
+    private List<List<Integer>> seats;
 
     private Map<String, Time> stationTimings;
 

@@ -30,8 +30,8 @@
     ],
     "station_times": {
       "bangalore": "13:50:00",
-      "jaipur": "13:50:00",
-      "delhi": "13:50:00"
+      "jaipur": "23:50:00",
+      "delhi": "03:50:00"
     },
     "stations": [
       "bangalore",

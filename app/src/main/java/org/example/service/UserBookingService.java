@@ -16,7 +16,7 @@ public class UserBookingService {
 
     private User user;
 
-    private final String USER_PATH="../localdb/users.json";
+    private final String USER_PATH="app/src/main/java/org/example/localdb/users.json";
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -69,6 +69,37 @@ public class UserBookingService {
     }
 
     public List<Train> getTrains(String source, String dest) {
+        try{
+            TrainBookingService trainService = new TrainBookingService();
+            return trainService.searchTrains(source, dest);
+        }catch(IOException ex){
+            return new ArrayList<>();
+        }
+    }
+
+    public List<List<Integer>> fetchSeats(Train trainSelectedForBooking) {
+        return trainSelectedForBooking.getSeats();
+    }
+
+    public Boolean bookTrainSeat(Train trainSelectedForBooking, int row, int seat) {
+
+         try{
+             TrainBookingService trainService = new TrainBookingService();
+             List<List<Integer>> seats=trainSelectedForBooking.getSeats();
+             if(row>=0 && row<seats.size() && seat>=0 && seat<seats.get(row).size()){
+                 if(seats.get(row).get(seat)==0){
+                     seats.get(row).set(seat,1);
+                     return Boolean.TRUE;
+                 }else{
+                     return Boolean.FALSE;
+                 }
+             }
+             else{
+                 return  Boolean.FALSE;
+             }
+         } catch (Exception e) {
+             return Boolean.FALSE;
+         }
 
     }
 }

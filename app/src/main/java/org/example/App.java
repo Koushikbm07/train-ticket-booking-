@@ -9,6 +9,7 @@ import org.example.service.UserBookingService;
 import org.example.util.UserServiceUtils;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.*;
 
 public class App {
@@ -72,7 +73,7 @@ public class App {
                         int index = 1;
                         for (Train t: trains){
                             System.out.println(index+" Train id : "+t.getTrainId());
-                            for (Map.Entry<String, String> entry: t.getStationTimes().entrySet()){
+                            for (Map.Entry<String, Time> entry: t.getStationTimings().entrySet()){
                                 System.out.println("station "+entry.getKey()+" time: "+entry.getValue());
                             }
                         }
